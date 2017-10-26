@@ -33,7 +33,7 @@ document.body.appendChild(renderer.domElement)
 var players = [];
 var player = null;
 
-var socket = io("http://localhost:8080");
+var socket = io(`${process.env.URL || 'http://localhost'}:8080`);
 
 // socket.emit('players', function(_players) {
 //   players = _players

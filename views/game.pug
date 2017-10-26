@@ -1,0 +1,14 @@
+html
+	head
+		title Sockets
+		include ./parts/head.pug
+		script
+			include ./libs/three.js
+			include ./libs/stats.js
+			include ./libs/dat.gui.js
+			include ./libs/FlyControls.js
+			include ./libs/FirstPersonControls.js
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js")
+		script(src="./js/player.js")
+	body
+		script(src="./js/game.js")

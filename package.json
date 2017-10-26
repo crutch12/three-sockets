@@ -1,0 +1,29 @@
+{
+  "name": "example-node-server-latest",
+  "version": "1.0.0",
+  "description": "Example Node Server w/ Babel es2017 (latest)",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "nodemon lib/index.js --exec babel-node --presets latest",
+    "build": "babel lib -d dist",
+    "test": "mocha --compilers js:babel-register"
+  },
+  "author": "James Kyle <me@thejameskyle.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+    "mocha": "^3.0.1",
+    "nodemon": "^1.10.0"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
+    "pug": "^2.0.0-rc.4",
+    "socket.io": "^2.0.4"
+  }
+}

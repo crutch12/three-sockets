@@ -1,3 +1,14 @@
+// public static Vector3 MoveTowards(Vector3 current, Vector3 target, float maxDistanceDelta)
+// {
+// 	Vector3 a = target - current;
+// 	float magnitude = a.magnitude;
+// 	if (magnitude <= maxDistanceDelta || magnitude == 0f)
+// 	{
+// 	 return target;
+// 	}
+// 	return current + a / magnitude * maxDistanceDelta;
+// }
+
  function MoveTowards(current, target, maxDelta) {
 	 if (Math.abs(target - current) <= maxDelta)
 	 {
@@ -95,8 +106,17 @@ class Player {
 	}
 
 	update(delta) {
-		this.cube.position.x = Lerp(this.cube.position.x, this.player.position.x, delta)
-		this.cube.position.z = Lerp(this.cube.position.z, this.player.position.z, delta)
+		// this.cube.position.x = MoveTowards(this.cube.position.x, this.player.position.x, delta)
+		// this.cube.position.z = MoveTowards(this.cube.position.z, this.player.position.z, delta)
+
+		
+		var diff = new THREE.Vector3().subVectors(this.cube.position, new THREE.Vector3(this.player.position.x, 1, this.player.position.z)).length()
+		if (diff > 5) {
+			this.cube.position.set(this.player.position.x, 1, this.player.position.z)
+		} else {
+			this.cube.position.lerp( new THREE.Vector3(this.player.position.x, 1, this.player.position.z), delta )
+		}
+		console.log(diff)
 		// console.log(this.moving.x)
 		// this.cube.position.x -= this.moving.x * delta
 		// this.cube.position.z += this.moving.z * delta

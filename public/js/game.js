@@ -33,7 +33,8 @@ document.body.appendChild(renderer.domElement)
 var players = [];
 var player = null;
 
-var socket = io(`${location.origin}:8080`);
+// var socket = io(`${location.origin}:3000`);
+var socket = io();
 
 // socket.emit('players', function(_players) {
 //   players = _players

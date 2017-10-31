@@ -114,7 +114,9 @@ socket.on('playerLeft', function(playerId) {
 socket.on('shootsMove', (shootsI) => {
 	for (var shoot of shootsI) {
 		var sh = _.find(shoots, {shoot: {id: shoot.id}})
-		sh.position.set(shoot.position.x, 0, shoot.position.z)
+		if (sh) {
+			sh.position.set(shoot.position.x, 0, shoot.position.z)
+		}
 	}
 })
 

@@ -115,8 +115,11 @@ socket.on('shootsMove', (shootsI) => {
 	for (var shoot of shootsI) {
 		var sh = _.find(shoots, {shoot: {id: shoot.id}})
 		if (sh) {
-			sh.position.set(shoot.position.x, 0, shoot.position.z)
+			sh.shoot.position = shoot.position
 		}
+		// if (sh) {
+		// 	sh.position.set(shoot.position.x, 0, shoot.position.z)
+		// }
 	}
 })
 
@@ -134,6 +137,10 @@ function render() {
 	renderer.render(scene, camera)
 	for (var pl of players) {
 		pl.update(0.015)
+	}
+
+	for (var shoot of shoots) {
+		shoot.position.lerp( new THREE.Vector3(shoot.shoot.position.x, 0, shoot.shoot.position.z), 0.015 * 5)
 	}
 } 
 
